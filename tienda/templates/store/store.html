@@ -1,0 +1,49 @@
+{% extends "store/layout.html" %}
+{% load static %}
+{% block body %}
+	<!--carrousel-->
+    <div id="mainSlider" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="#"   class="d-block w-50 border border-light float-left" >
+            <img src="#" class="d-block w-50 border border-light border" >
+        </div>
+        <div class="carousel-item">
+            <img src="#" class="d-block w-50 float-left">
+            <img src="#" class="d-block w-50">
+        </div>
+      </div>
+    </div>
+
+    <!--separación-->
+    <div class="container text-center mt-3">
+      <h3 class="">COMPRA DALE DALE DALE, STOCK DE TODO </h1>
+
+      <p>de lo mejorcito que hay, mira para abajo compa</p>
+    </div>
+
+    <!--productoos-->
+  <div id="products" class="container-md">
+  <div class="row row-cols-1 row-cols-md-2">
+
+    {% for producto in productos %}
+
+        {% if 7 > producto.id %}
+          <div class="col-lg-4 pb-4">   
+            <img style="height:16rem" src="{{ producto.imagenURL }}" class="thumbnail">
+            <div class="box-element product">
+              <h6><strong>{{ producto.nombre }}</strong></h6>
+              <hr>
+              <button data-product="{{ producto.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Añadir al carrito</button>
+              <a class="btn btn-outline-secondary" href="#">Ver</a>
+              <h4 style="display:inline-block; float:right">${{ producto.precio|floatformat:2 }}</h4>
+            </div>
+        </div>
+        {% endif %}
+
+    {% endfor %}
+
+
+  </div>
+  </div>
+{% endblock%}
